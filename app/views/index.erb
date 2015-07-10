@@ -1,0 +1,17 @@
+<h1>Check it!</h1>
+
+<h3>Log In</h3>
+<form action="/login" method="post">
+	Email:
+	<input type="text" name="email"><br><br>
+	Password:
+	<input type="password" name="password"><br><br>
+	<input type="submit" value="Submit">
+</form>
+<br>
+<a href="/users/new">Register</a>
+
+<% if session[:errors] %>
+	<p><%= session[:errors] %></p>
+	<% session[:errors] = nil %>
+<% end %>
