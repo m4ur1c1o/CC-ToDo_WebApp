@@ -13,8 +13,9 @@ end
 
 # SHOW
 get '/users/:id' do
-	id = params[:id]
-	@user = User.find("#{id}")
+	@user = current_user
+	@tasks = @user.tasks.order(created_at: :desc)
+
 	erb :show_user
 end
 
