@@ -9,7 +9,7 @@
 
 <ul id="todo-list" class="unstyled">
 	<% @tasks.each do |task| %>
-		<li id="<%= task.id %>"> 
+		<li id="<%= task.id %>">
 			<span class="task <%= task.done ? "task-done" : "" %>">
 				<%= task.content %>
 			</span>

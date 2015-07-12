@@ -1,8 +1,12 @@
-# GETS ============================================================================
+# GETS =======================================================================
 
+get '/task/delete/:id' do
+	@task = Task.find(params[:id])
 
+	erb :delete_task
+end
 
-# POSTS ===========================================================================
+# POSTS ======================================================================
 
 post '/task/new' do
 	task = params[:task]
@@ -14,7 +18,7 @@ post '/done' do
 	task_id = params[:id]
 	task = Task.find(task_id)
 	task.done = !task.done
-	
+
 	if task.save
 		# "Done"
 		if task.done
@@ -24,5 +28,15 @@ post '/done' do
 		end
 	else
 		"Task not updated"
+	end
+end
+
+post '/task/delete/:id' do
+	if params.has_key?("ok")
+		task = Task.find(params[:id])
+		task.destroy
+		redirect to("/users/#{current_user.id}")
+	else
+		redirect to("/users/#{current_user.id}")
 	end
 end
