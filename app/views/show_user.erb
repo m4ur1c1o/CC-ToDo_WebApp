@@ -1,5 +1,3 @@
-<h1>Hello! <%= @user.username%></h1>
-
 <h2>Add ToDo</h2>
 
 <form action="/task/new" method="post">
@@ -7,14 +5,14 @@
 	<input type="submit" name="delete" value="Post">
 </form>
 
-<ul id="todo-list" class="unstyled">
+<ul id="todo-list" class="list-unstyled">
 	<% @tasks.each do |task| %>
 		<li id="<%= task.id %>">
 			<span class="task <%= task.done ? "task-done" : "" %>">
 				<%= task.content %>
 			</span>
 			<span class="pull-right">
-				<a href="#" class="btn done">
+				<a href="#" class="btn btn-default done">
 					<%= task.done ? "Not done" : "Done" %>
 				</a>
 				<a href="/task/delete/<%=task.id%>" class="btn btn-danger">Delete</a>
@@ -28,7 +26,3 @@
 <form action="/users/<%=@user.id%>/delete" method="post">
 	<input type="submit" name="delete" value="Delete">
 </form>
-<br>
-<a href="/users/<%=@user.id%>/edit">Edit</a>
-<a href="/users/<%=@user.id%>">Back to profile</a>
-<a href="/logout">Log Out</a>

@@ -1,4 +1,4 @@
-before do 
+before do
  session_validation
  current_user_validation
 end
@@ -6,10 +6,10 @@ end
 # GETS ============================================================================
 
 # NEW
-get '/register' do
+# get '/register' do
 
-	erb :new_user
-end
+# 	erb :new_user
+# end
 
 # SHOW
 get '/users/:id' do
@@ -72,7 +72,7 @@ post '/users/:id' do
 	puts params
 	id = params[:id]
 	user = User.find(id)
-	
+
 
 	first_name = params[:user][:first_name]
 	last_name = params[:user][:last_name]
@@ -82,10 +82,10 @@ post '/users/:id' do
 
 
 	if password == ""
-		user.update(first_name: first_name, last_name: last_name, username: username, email: email)	
+		user.update(first_name: first_name, last_name: last_name, username: username, email: email)
 	else
 		# Meter un confirmación de el password anterior para poder cambiar el pasword
-		user.update(params[:user])	
+		user.update(params[:user])
 	end
 	redirect to("/users/#{id}")
 end
